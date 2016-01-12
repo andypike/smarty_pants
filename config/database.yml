@@ -1,0 +1,12 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: smarty_pants_development
+
+test:
+  <<: *default
+  database: smarty_pants_test
