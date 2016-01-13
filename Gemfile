@@ -9,6 +9,8 @@ gem "jquery-rails"
 gem "bcrypt",         "~> 3.1.7"
 gem "slim"
 gem "bootstrap-sass", "~> 3.3.6"
+gem "simple_form",    "~> 3.2.1"
+gem "rectify",        :github => "andypike/rectify"
 
 group :development, :test do
   gem "dotenv-rails"
