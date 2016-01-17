@@ -11,6 +11,7 @@ gem "slim"
 gem "bootstrap-sass", "~> 3.3.6"
 gem "simple_form",    "~> 3.2.1"
 gem "rectify",        :github => "andypike/rectify"
+gem "valid_email"
 
 group :development, :test do
   gem "dotenv-rails"
