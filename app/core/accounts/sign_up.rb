@@ -5,7 +5,7 @@ module Accounts
     end
 
     def call
-      return broadcast(:invalid) unless form.valid?
+      return broadcast(:invalid) if form.invalid?
 
       transaction do
         create_account

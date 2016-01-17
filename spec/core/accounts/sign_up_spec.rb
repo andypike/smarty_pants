@@ -2,7 +2,7 @@ RSpec.describe Accounts::SignUp do
   subject { described_class.new(form) }
 
   context "when the form is invalid" do
-    let(:form) { double(:valid? => false) }
+    let(:form) { double(:invalid? => true) }
 
     it "broadcasts :invalid" do
       expect { subject.call }.to broadcast(:invalid)

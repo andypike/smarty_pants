@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/andypike/rectify.git
-  revision: 49862e05844dfb628559dbe615ed819688dcef89
+  revision: 509c8599a15949cb5bd10061c0b2f7e2105ab31c
   specs:
-    rectify (0.0.2)
+    rectify (0.0.3)
       activemodel (~> 4.2, >= 4.2.0)
       activerecord (~> 4.2, >= 4.2.0)
       activesupport (~> 4.2, >= 4.2.0)
