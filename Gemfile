@@ -10,7 +10,7 @@ gem "bcrypt",         "~> 3.1.7"
 gem "slim"
 gem "bootstrap-sass", "~> 3.3.6"
 gem "simple_form",    "~> 3.2.1"
-gem "rectify",        :github => "andypike/rectify"
+gem "rectify",        "~> 0.2.0"
 gem "valid_email"
 
 group :development, :test do
