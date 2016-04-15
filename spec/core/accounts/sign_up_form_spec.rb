@@ -14,6 +14,8 @@ RSpec.describe Accounts::SignUpForm do
   end
 
   describe "validation" do
+    before { stub_query(Security::CredentialByUsername, :results => []) }
+
     it "is valid with valid attributes" do
       expect(subject).to be_valid
     end
@@ -52,7 +54,7 @@ RSpec.describe Accounts::SignUpForm do
       end
 
       it "must be unique within credentials" do
-        create(:adult, :email => "me@here.com")
+        stub_query(Security::CredentialByUsername, :results => Credential.new)
 
         expect(subject).to be_invalid
         expect(subject.errors[:email]).to be_present

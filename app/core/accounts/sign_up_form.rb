@@ -19,7 +19,7 @@ module Accounts
     private
 
     def validate_email_uniqueness
-      return if Credential.find_by_username(email).blank?
+      return if Security::CredentialByUsername.new(email).none?
 
       errors.add(:email, I18n.t(:already_in_use))
     end

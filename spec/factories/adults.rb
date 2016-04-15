@@ -4,8 +4,10 @@ FactoryGirl.define do
     last_name "Pike"
     email "me@here.com"
 
-    after(:create) do |adult|
-      create(:credential, :username => adult.email, :owner => adult)
+    trait :with_credentials do
+      after(:create) do |adult|
+        create(:credential, :username => adult.email, :owner => adult)
+      end
     end
   end
 end

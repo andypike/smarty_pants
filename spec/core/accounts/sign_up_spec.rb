@@ -12,7 +12,8 @@ RSpec.describe Accounts::SignUp do
   context "when the form is valid" do
     let(:account) { Account.order(:created_at => :desc).first }
     let(:form) do
-      Accounts::SignUpForm.new(
+      Rectify::StubForm.new(
+        :valid?     => true,
         :first_name => "Andy",
         :last_name  => "Pike",
         :email      => "me@here.com",
@@ -58,8 +59,7 @@ RSpec.describe Accounts::SignUp do
 
     context "when saving fails due to race condition of unique username" do
       it "broadcasts :race_non_unique_email" do
-        create(:adult, :email => "me@here.com")
-        allow(form).to receive(:valid?).and_return(true)
+        create(:adult, :with_credentials, :email => "me@here.com")
 
         expect { subject.call }.to broadcast(:race_non_unique_email)
       end

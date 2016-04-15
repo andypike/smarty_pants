@@ -11,6 +11,7 @@ require "rspec/rails"
 require "capybara/rails"
 require "capybara/rspec"
 require "wisper/rspec/matchers"
+require "rectify/rspec"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -19,6 +20,8 @@ ActiveRecord::Migration.maintain_test_schema!
 Capybara.configure do |config|
   config.match = :prefer_exact
 end
+
+Rectify::RSpec::DatabaseReporter.enable
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
@@ -33,8 +36,10 @@ RSpec.configure do |config|
   config.include Wisper::RSpec::BroadcastMatcher
   config.include FeatureHelpers, :type => :feature
   config.include EmailHelpers
+  config.include Rectify::RSpec::Helpers
 
-  Rails.application.default_url_options = Rails.application.config.action_mailer.default_url_options
+  app = Rails.application
+  app.default_url_options = app.config.action_mailer.default_url_options
 
   config.mock_with :rspec do |mocks|
     mocks.verify_doubled_constant_names = true
